@@ -13,14 +13,14 @@ class StringConverterCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'convert:string';
+    protected $signature = 'convert:string {--string=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'This command will convert string into UPPERCASE, alternate-uppercase and output a csv file.';
 
     /**
      * Execute the console command.
@@ -30,7 +30,9 @@ class StringConverterCommand extends Command
     public function handle()
     {
 
-        $string = $this->ask('Enter a string:');
+//        $string = $this->ask('Enter a string:');
+
+        $string = $this->option('string');
 
         $result1 = (new StringService)->convertStringToUppercase($string);
         $result2 = (new StringService)->convertStringToAlternateUpperAndLower($string);
